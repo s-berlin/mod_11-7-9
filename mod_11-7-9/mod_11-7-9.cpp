@@ -346,14 +346,13 @@ int main()
     setlocale(LC_ALL, "");
 
     //-------------------------------------------------------------------------------------------------------------------------
+    const int size = 10000000;
     int fi_exist = 0; // признак наличия исходного файла (1 - есть, 0 - нет)
     if (fi_exist == 0) {
 
         auto start1 = chrono::high_resolution_clock::now(); // сохраняем время начала формирования исходного файла
 
         fi.open(filename, fstream::out);
-
-        const int size = 1000;
 
         int* rand_arr = new int[size];
         // записываем в файл 40 раз по 10 млн элементов
@@ -383,7 +382,7 @@ int main()
     // 
     int* array_from_file = nullptr;
 
-    int n = 2500;  // размер массива 25 млн
+    int n = 25 * size / 10;  // размер массива 25 млн
     array_from_file = new int[n];
 
     int fsn_exist = 0; // признак наличия исходного файла (1 - есть, 0 - нет)
